@@ -1,0 +1,192 @@
+/* Show the toggle button on small screens */
+@media (max-width: 900px) {
+  .service-post {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  @media screen and (max-width: 768px) {
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      background-color: #333;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      padding: 10px 0;
+      background: rgba(51, 51, 51, 0.95);
+      backdrop-filter: blur(5px);
+      transform: translateY(-100%);
+      transition: transform var(--transition-speed);
+    }
+
+    .nav-links.active {
+      display: flex;
+      transform: translateY(0);
+    }
+
+    .nav-links li {
+      text-align: center;
+      width: 100%;
+    }
+
+    .hamburger {
+      display: flex;
+    }
+  }
+
+  .price .col-md-6 {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .hero-text {
+    width: 90%;
+    margin: 0 auto;
+    transform: translateY(-30%);
+  }
+
+  .service-post {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 15px;
+  }
+
+  .prep {
+    width: 70%;
+    margin: 0;
+  }
+
+  .second-aside img {
+    width: 100%;
+    height: 90%;
+  }
+
+  #back-to-top {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  /* Media Query for Mobile Devices */
+  .footer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--primary-color),
+      transparent
+    );
+  }
+
+  .footer-content {
+    flex-direction: column; /* Stack elements vertically on smaller screens */
+    align-items: center; /* Center items for a cleaner look */
+  }
+
+  .footer-logo {
+    text-align: center; /* Center logo on smaller screens */
+  }
+
+  .footer-links,
+  .footer-contact,
+  .footer-social {
+    text-align: center; /* Center the content within each section */
+    margin-bottom: 20px;
+  }
+
+  .footer-logo p {
+    margin-top: 10px;
+  }
+
+  .social-icons {
+    justify-content: center; /* Center social icons on mobile */
+  }
+
+  .footer h4 {
+    font-size: 16px; /* Slightly smaller headings */
+  }
+
+  .footer-links a,
+  .footer-contact a {
+    font-size: 14px; /* Smaller link text */
+  }
+
+  .social-icon {
+    font-size: 18px; /* Smaller social icons */
+    transition: transform var(--transition-speed);
+  }
+
+  .social-icon:hover {
+    transform: translateY(-3px);
+  }
+
+  .footer {
+    padding: 20px 10px; /* Less padding for mobile */
+  }
+
+  .footer-logo p,
+  .footer-contact p {
+    font-size: 14px; /* Adjust text size for contact info */
+  }
+
+  /* Back to Top Button Animation */
+  .back-to-top {
+    transition: all var(--transition-speed);
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  .back-to-top:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@media (max-width: 650px) {
+  .service-post {
+    grid-template-columns: 1fr;
+  }
+  .accordion-box {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .price .col-md-6 {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .hero .carousel-caption h1 {
+    font-size: 22px;
+  }
+
+  .hero .carousel-caption p {
+    font-size: 14px;
+  }
+
+  .service .grid-item {
+    padding: 10px;
+  }
+
+  .footer .footer-social .social-icons a {
+    font-size: 18px;
+  }
+
+  @media (max-width: 430px) {
+    .tab-posts-box {
+      display: none;
+    }
+  }
+}
