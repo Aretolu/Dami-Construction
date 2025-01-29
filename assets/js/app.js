@@ -1,12 +1,18 @@
-document.addEventListener("DOMContentLoaded", function () {
-  // Toggle the navigation menu when hamburger is clicked
-  const hamburger = document.getElementById("hamburger");
-  const navLinks = document.getElementById("navLinks");
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
 
-  hamburger.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
+hamburger.addEventListener("click", () => {
+  navMenu.classList.toggle("active");
+});
+
+// Close menu when clicking a link
+document.querySelectorAll(".nav-link").forEach((link) => {
+  link.addEventListener("click", () => {
+    navMenu.classList.remove("active");
   });
+});
 
+document.addEventListener("DOMContentLoaded", function () {
   // Initialize Bootstrap carousel (if not already done by Bootstrap)
   const carousel = new bootstrap.Carousel(
     document.getElementById("carouselExampleCaptions"),
@@ -185,31 +191,45 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Save this as tabs.js
 document.addEventListener("DOMContentLoaded", function () {
-  // Get all tab buttons and content
-  const tabButtons = document.querySelectorAll("#myTab li a");
-  const tabContents = document.querySelectorAll(".tab-content .tab-pane");
+  // Tab functionality
+  const tabLinks = document.querySelectorAll(".nav-tabs li a");
 
-  // Add click event to each tab button
-  tabButtons.forEach((button) => {
-    button.addEventListener("click", (e) => {
+  tabLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
       e.preventDefault();
 
-      // Remove active class from all buttons and content
-      tabButtons.forEach((btn) => {
-        btn.parentElement.classList.remove("active");
-      });
-      tabContents.forEach((content) => {
-        content.classList.remove("active");
-      });
+      // Remove active class from all tabs and panes
+      document
+        .querySelectorAll(".nav-tabs li")
+        .forEach((tab) => tab.classList.remove("active"));
+      document
+        .querySelectorAll(".tab-pane")
+        .forEach((pane) => pane.classList.remove("active"));
 
-      // Add active class to clicked button
-      button.parentElement.classList.add("active");
+      // Add active class to clicked tab
+      link.parentElement.classList.add("active");
 
       // Show corresponding content
-      const targetId = button.getAttribute("href").substring(1);
-      document.getElementById(targetId).classList.add("active");
+      const target = link.getAttribute("href").substring(1);
+      document.getElementById(target).classList.add("active");
+    });
+  });
+
+  // Accordion functionality
+  const accordionItems = document.querySelectorAll(".accord-elem");
+
+  accordionItems.forEach((item) => {
+    item.querySelector(".accord-title").addEventListener("click", () => {
+      const isActive = item.classList.contains("active");
+
+      // Close all items
+      accordionItems.forEach((accItem) => accItem.classList.remove("active"));
+
+      // If clicked item wasn't active, open it
+      if (!isActive) {
+        item.classList.add("active");
+      }
     });
   });
 });
